@@ -8,6 +8,9 @@ import { AddPage } from '../add/add';
 import { UserProvider } from '../../providers/user';
 import { IUser, IHttpResult } from '../../models/iuser';
 
+import moment from 'moment';
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -15,6 +18,7 @@ import { IUser, IHttpResult } from '../../models/iuser';
 export class HomePage {
 
   users: Array<IUser>;
+  mydate: string;
 
   constructor(
     public navCtrl: NavController,
@@ -22,6 +26,8 @@ export class HomePage {
     private loadingCtrl: LoadingController,
     private actionSheetCtrl: ActionSheetController
   ) {
+
+    this.mydate = `${moment().format('DD')} ${moment().lang('th').format('MMMM')} ${moment().get('year') + 543}`;
   }
 
   presentActionSheet(user: IUser) {

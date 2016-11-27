@@ -1,6 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
+import { ChartModule } from 'angular2-highcharts';
+
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -25,7 +27,8 @@ import { UserProvider } from '../providers/user';
     AddPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ChartModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +44,7 @@ import { UserProvider } from '../providers/user';
   providers: [
     UserProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    { provide: 'API_URL', useValue: 'http://localhost:3000' }
+    { provide: 'API_URL', useValue: 'http://192.168.43.224:3000' }
   ]
 })
 export class AppModule {}

@@ -27,10 +27,7 @@ export class LoginPage {
   }
 
   ionViewDidEnter() {
-    let fullname = localStorage.getItem('fullname');
-    if (fullname) {
-      this.navCtrl.setRoot(TabsPage);
-    }
+
   }
 
   login() {

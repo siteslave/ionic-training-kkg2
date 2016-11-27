@@ -9,9 +9,18 @@ import { LoginPage } from '../pages/login/login';
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = LoginPage;
+
+  rootPage: any;
 
   constructor(platform: Platform) {
+
+    let fullname = localStorage.getItem('fullname');
+    if (fullname) {
+      this.rootPage = TabsPage;
+    } else {
+      this.rootPage = LoginPage;
+    }    
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

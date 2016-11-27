@@ -19,6 +19,18 @@ export class UserProvider {
     })
   }  
 
+  registerToken(token: string) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      let body = { token: token };
+
+      this.http.post(`${this.apiUrl}/register`, body, options)
+        .map(res => res.json())
+        .subscribe(data => resolve(data), err => reject(err));
+    })
+  } 
+
   getGroups() {
     return new Promise((resolve, reject) => {
       this.http.get(`${this.apiUrl}/groups`)

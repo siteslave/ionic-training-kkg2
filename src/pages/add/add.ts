@@ -12,10 +12,6 @@ import { IUser, IGroup, IHttpResult } from '../../models';
 export class AddPage {
 
   groups: Array<IGroup>;
-  // username: string;
-  // name: string;
-  // email: string;
-  // group_id: string;
   user: IUser;
 
   constructor(

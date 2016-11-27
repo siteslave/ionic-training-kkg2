@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, ActionSheetController } from 'ionic-angular';
 
 import { DetailPage } from '../detail/detail';
 import { AddPage } from '../add/add';
@@ -19,10 +19,49 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     private userProvider: UserProvider,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private actionSheetCtrl: ActionSheetController
   ) {
   }
 
+  presentActionSheet(user: IUser) {
+   let actionSheet = this.actionSheetCtrl.create({
+     title: 'เมนูใช้งาน',
+     buttons: [
+       {
+         text: 'ลบข้อมูล',
+         icon: 'trash',
+         role: 'destructive',
+         handler: () => {
+           console.log('Destructive clicked');
+         }
+       },
+       {
+         text: 'ดูข้อมูล',
+         icon: 'information-circle',
+         handler: () => {
+           this.navCtrl.push(DetailPage, {user: user});
+         }
+       },
+       {
+         text: 'แก้ไขข้อมูล',
+         handler: () => {
+          //  this.navCtrl.push(DetailPage, {user: user});
+         }
+       },
+       {
+         text: 'ยกเลิก',
+         role: 'cancel',
+         handler: () => {
+           console.log('Cancel clicked');
+         }
+       }
+     ]
+   });
+
+   actionSheet.present();
+  }
+  
   goAdd() {
     this.navCtrl.push(AddPage);
   } 

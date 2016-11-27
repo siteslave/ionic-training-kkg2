@@ -15,5 +15,6 @@ export interface IHttpResult {
   ok: boolean,
   rows?: any,
   err?: any,
-  groups?: any
+  groups?: any,
+  fullname?: string
 }

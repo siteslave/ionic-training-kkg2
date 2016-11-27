@@ -43,6 +43,18 @@ export class UserProvider {
     })
   }  
 
+  login(username: string, password: string) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      let body = { username: username, password: password };
+
+      this.http.post(`${this.apiUrl}/login`, body, options)
+        .map(res => res.json())
+        .subscribe(data => resolve(data), err => reject(err));
+    })
+  }  
+
   save(user: IUser) {
     return new Promise((resolve, reject) => {
       let headers = new Headers({ 'Content-Type': 'application/json' });

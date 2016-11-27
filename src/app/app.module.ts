@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { ChartModule } from 'angular2-highcharts';
 
@@ -11,7 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SettingPage } from '../pages/setting/setting';
 import { DetailPage } from '../pages/detail/detail';
 import { AddPage } from '../pages/add/add';
-
+import { LoginPage } from '../pages/login/login';
 
 import { UserProvider } from '../providers/user';
 
@@ -24,7 +25,8 @@ import { UserProvider } from '../providers/user';
     TabsPage,
     SettingPage,
     DetailPage,
-    AddPage
+    AddPage,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -39,9 +41,11 @@ import { UserProvider } from '../providers/user';
     TabsPage,
     SettingPage,
     DetailPage,
-    AddPage
+    AddPage,
+    LoginPage
   ],
   providers: [
+    Storage,
     UserProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: 'API_URL', useValue: 'http://192.168.43.224:3000' }

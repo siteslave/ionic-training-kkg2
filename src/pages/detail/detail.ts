@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { IUser } from '../../models';
 
 @Component({
   selector: 'page-detail',
@@ -7,12 +8,11 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class DetailPage {
 
-  id: number;
-  name: string;
+  user: IUser;
 
   constructor(public navCtrl: NavController, private navParams: NavParams) {
-    this.id = this.navParams.get('id');
-    this.name = this.navParams.get('name');
+    this.user = this.navParams.get('user');
+    console.log(this.user);
   }
 
   ionViewDidLoad() {

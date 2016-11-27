@@ -19,6 +19,14 @@ export class UserProvider {
     })
   }  
 
+  getGroups() {
+    return new Promise((resolve, reject) => {
+      this.http.get(`${this.apiUrl}/groups`)
+        .map(res => res.json())
+        .subscribe(data => resolve(data), err => reject(err));
+    })
+  }  
+
   remove(id: number) {
     return new Promise((resolve, reject) => {
       this.http.delete(`${this.apiUrl}/users/${id}`)

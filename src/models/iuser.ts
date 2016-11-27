@@ -14,5 +14,6 @@ export interface IUserDetail extends IUser {
 export interface IHttpResult {
   ok: boolean,
   rows?: any,
-  err?: any
+  err?: any,
+  groups?: any
 }

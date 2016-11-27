@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 
 import { DetailPage } from '../detail/detail';
+import { AddPage } from '../add/add';
+
 import { UserProvider } from '../../providers/user';
 import { IUser, IHttpResult } from '../../models/iuser';
 
@@ -16,25 +18,41 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    private userProvider: UserProvider) {
+    private userProvider: UserProvider,
+    private loadingCtrl: LoadingController
+  ) {
   }
 
-  goDetail() {
-    this.navCtrl.push(DetailPage, {id: '1', name: 'John Doe'});
+  goAdd() {
+    this.navCtrl.push(AddPage);
+  } 
+  
+  goDetail(user: IUser) {
+    this.navCtrl.push(DetailPage, {user: user});
   }
 
   getUsers() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'circles',
+      content: 'Please wait...'
+    });
+
+    loading.present();
+    
     this.userProvider.getUsers()
       .then((data: IHttpResult) => {
         if (data.ok) {
           this.users = <Array<IUser>>data.rows;
         }
+        loading.dismiss();
+
       }, err => {
         console.error(err);
+        loading.dismiss();
        })
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     this.getUsers();
   }
 

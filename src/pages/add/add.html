@@ -1,0 +1,46 @@
+
+<ion-header>
+
+  <ion-navbar color="teal">
+    <ion-title>เพิ่มผู้ใช้งาน</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-list>
+
+  <ion-item>
+    <ion-label floating>ชื่อ</ion-label>
+    <ion-input type="text" [(ngModel)]="user.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Username</ion-label>
+    <ion-input type="text" [(ngModel)]="user.username"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Email</ion-label>
+    <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Groups</ion-label>
+    <ion-select [(ngModel)]="user.group_id" cancelText="ยกเลิก" okText="เลือก">
+      <ion-option [value]="group.id" *ngFor="let group of groups">{{ group.name }}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <button ion-button icon-left (click)="save()">
+      <ion-icon name="person"></ion-icon>
+      Save
+    </button>
+  </ion-item>
+
+</ion-list>
+
+</ion-content>

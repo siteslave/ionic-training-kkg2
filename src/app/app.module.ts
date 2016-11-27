@@ -8,6 +8,8 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SettingPage } from '../pages/setting/setting';
 import { DetailPage } from '../pages/detail/detail';
+import { AddPage } from '../pages/add/add';
+
 
 import { UserProvider } from '../providers/user';
 
@@ -19,7 +21,8 @@ import { UserProvider } from '../providers/user';
     HomePage,
     TabsPage,
     SettingPage,
-    DetailPage
+    DetailPage,
+    AddPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,7 +35,8 @@ import { UserProvider } from '../providers/user';
     HomePage,
     TabsPage,
     SettingPage,
-    DetailPage
+    DetailPage,
+    AddPage
   ],
   providers: [
     UserProvider,
